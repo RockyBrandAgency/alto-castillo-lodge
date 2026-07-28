@@ -29,6 +29,27 @@ const ACTIVITY_OPTIONS = [
   "No lo tengo considerado",
 ] as const;
 
+// Códigos reales de los mercados que pide el brief (Chile, EE.UU./Canadá,
+// Alemania, Francia, España, Portugal, Países Bajos, Bélgica) + los
+// países vecinos más frecuentes hoy (Argentina, Brasil) + Reino Unido/
+// Italia como mercados europeos adicionales comunes. "Otro" cubre el resto
+// sin fingir una lista exhaustiva de ISO.
+const PHONE_COUNTRY_CODES = [
+  { code: "+56", label: "Chile (+56)" },
+  { code: "+54", label: "Argentina (+54)" },
+  { code: "+55", label: "Brasil (+55)" },
+  { code: "+1", label: "EE.UU. / Canadá (+1)" },
+  { code: "+49", label: "Alemania (+49)" },
+  { code: "+33", label: "Francia (+33)" },
+  { code: "+34", label: "España (+34)" },
+  { code: "+351", label: "Portugal (+351)" },
+  { code: "+31", label: "Países Bajos (+31)" },
+  { code: "+32", label: "Bélgica (+32)" },
+  { code: "+44", label: "Reino Unido (+44)" },
+  { code: "+39", label: "Italia (+39)" },
+  { code: "otro", label: "Otro" },
+] as const;
+
 export default function ReservarPage() {
   const [availability, setAvailability] = useState<AvailabilityResponse | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -43,7 +64,8 @@ export default function ReservarPage() {
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
+  const [phoneCode, setPhoneCode] = useState<string>(PHONE_COUNTRY_CODES[0].code);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [originCountry, setOriginCountry] = useState("");
   const [specialNotes, setSpecialNotes] = useState("");
   const [preferredActivity, setPreferredActivity] = useState<string>("");
@@ -122,7 +144,7 @@ export default function ReservarPage() {
     setChildrenAges((ages) => ages.filter((_, i) => i !== index));
   }
 
-  const canSubmit = selectedRoom && checkIn && checkOut && nights >= 2 && fullName.trim() && (email.trim() || whatsapp.trim());
+  const canSubmit = selectedRoom && checkIn && checkOut && nights >= 2 && fullName.trim() && (email.trim() || phoneNumber.trim());
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -138,7 +160,10 @@ export default function ReservarPage() {
       ChildrenAges: childrenAges,
       Guest: {
         FullName: fullName,
-        Contact: { Email: email || undefined, WhatsApp: whatsapp || undefined },
+        Contact: {
+          Email: email || undefined,
+          WhatsApp: phoneNumber.trim() ? `${phoneCode === "otro" ? "" : phoneCode} ${phoneNumber.trim()}`.trim() : undefined,
+        },
         OriginCountry: originCountry || undefined,
         SpecialNotes: specialNotes || undefined,
         Preferences: preferredActivity ? { actividad_preferida: preferredActivity } : undefined,
@@ -186,7 +211,7 @@ export default function ReservarPage() {
         )}
 
         {availability && (
-          <form className={styles.layout} onSubmit={handleSubmit}>
+          <form id="reservar-form" className={styles.layout} onSubmit={handleSubmit}>
             <div>
               <div className={styles.step}>
                 <span className={styles.stepLabel}>1 · Habitación</span>
@@ -302,7 +327,31 @@ export default function ReservarPage() {
                 <div className={styles.formGrid}>
                   <FormField label="Nombre completo" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
                   <FormField label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                  <FormField label="WhatsApp" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} />
+                  <div className={styles.phoneField}>
+                    <span className={styles.selectLabel}>Teléfono</span>
+                    <div className={styles.phoneRow}>
+                      <select
+                        className={styles.phoneCodeSelect}
+                        value={phoneCode}
+                        onChange={(e) => setPhoneCode(e.target.value)}
+                        aria-label="Código de país"
+                      >
+                        {PHONE_COUNTRY_CODES.map((c) => (
+                          <option key={c.code} value={c.code}>
+                            {c.label}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="tel"
+                        className={styles.phoneNumberInput}
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        placeholder="9 1234 5678"
+                        aria-label="Número de teléfono"
+                      />
+                    </div>
+                  </div>
                   <FormField label="País" value={originCountry} onChange={(e) => setOriginCountry(e.target.value)} />
                 </div>
                 <div style={{ marginTop: "16px" }}>
@@ -430,6 +479,20 @@ export default function ReservarPage() {
           </form>
         )}
       </Container>
+
+      {availability && (
+        <div className={styles.mobileBar}>
+          <div className={styles.mobileBarInfo}>
+            <span className={styles.mobileBarLabel}>{selectedRoom ? ROOM_LABELS[selectedRoom] : "Elige una habitación"}</span>
+            <span className={styles.mobileBarPrice}>
+              {estimatedTotal ? `${estimatedTotal.toLocaleString("es-CL")} ${CURRENCY_LABEL[currency]}` : "—"}
+            </span>
+          </div>
+          <Button type="submit" form="reservar-form" variant="primary" disabled={!canSubmit || submitState === "loading"}>
+            {submitState === "loading" ? "Enviando…" : "Reservar"}
+          </Button>
+        </div>
+      )}
     </main>
   );
 }

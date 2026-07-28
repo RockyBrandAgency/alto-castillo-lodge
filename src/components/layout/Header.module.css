@@ -26,14 +26,23 @@
 }
 
 .logo {
-  height: 38px;
+  height: 60px;
   width: auto;
   display: block;
   transition: height 0.3s ease;
 }
 
 .headerSolid .logo {
-  height: 32px;
+  height: 50px;
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 48px;
+  }
+  .headerSolid .logo {
+    height: 40px;
+  }
 }
 
 .nav {
