@@ -1,0 +1,156 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-ink);
+}
+
+/* ---- variante: photo (experiencia sobre foto) ---- */
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.photoImage {
+  object-fit: cover;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-overlay) 85%, transparent) 0%, transparent 55%);
+}
+
+.photoCaption {
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.photoEyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  letter-spacing: var(--text-caption-tracking);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.photoTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+/* ---- variante: info (actividad + CTA) ---- */
+.info {
+  padding: var(--space-4) var(--space-3);
+  gap: var(--space-2);
+  border: 1px solid var(--color-bg-alt);
+}
+
+.infoEyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  letter-spacing: var(--text-caption-tracking);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.infoText {
+  color: var(--color-ink-soft);
+  font-size: 14.5px;
+  line-height: var(--text-body-line);
+  flex-grow: 1;
+}
+
+.infoCta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-forest);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+
+/* ---- variante: quote (testimonio) ---- */
+.quote {
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-bg-alt);
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 220px;
+}
+
+.quoteText {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+.quoteAuthor {
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  letter-spacing: var(--text-caption-tracking);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* ---- variante: room (habitación con precio) ---- */
+.room {
+  border: 1px solid var(--color-bg-alt);
+}
+
+.roomImage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+}
+
+.roomImageEl {
+  object-fit: cover;
+}
+
+.roomBody {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+
+.roomText {
+  color: var(--color-ink-soft);
+  font-size: 14.5px;
+  line-height: var(--text-body-line);
+}
+
+.roomFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.roomPrice {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink);
+}

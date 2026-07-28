@@ -1,0 +1,48 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 13px var(--space-3);
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--duration-hover) ease, border-color var(--duration-hover) ease, opacity var(--duration-hover) ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Primario — sólido #425327, hover #344219 (valores medidos del Figma) */
+.primary {
+  background: var(--color-forest);
+  color: var(--color-white);
+}
+.primary:hover:not(:disabled) {
+  background: var(--color-forest-hover);
+}
+
+/* Secundario — borde 1px, hover con tinte suave del fondo */
+.secondary {
+  background: transparent;
+  color: var(--color-forest);
+  border-color: var(--color-forest);
+}
+.secondary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-forest) 6%, transparent);
+}
+
+/* Sobre fondo oscuro — borde claro, texto claro */
+.dark {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+.dark:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-white) 12%, transparent);
+}

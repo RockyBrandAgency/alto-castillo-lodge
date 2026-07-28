@@ -1,0 +1,282 @@
+{
+  "deluxe-superior": [
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-01-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-02-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-03-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-04-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-05-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-06-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe-superior/deluxe-superior-07-hero.webp",
+      "alt": "Habitación Deluxe Superior, Alto Castillo Lodge"
+    }
+  ],
+  "exterior": [
+    {
+      "src": "/images/exterior/exterior-01-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-02-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-03-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-04-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-05-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-06-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-07-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-08-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-09-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-10-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-11-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-12-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-13-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-14-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-15-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-16-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-17-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    },
+    {
+      "src": "/images/exterior/exterior-18-hero.webp",
+      "alt": "vista exterior de Alto Castillo Lodge, Cerro Castillo"
+    }
+  ],
+  "deluxe": [
+    {
+      "src": "/images/deluxe/deluxe-01-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-02-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-03-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-04-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-05-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-06-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-07-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-08-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-09-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-10-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/deluxe/deluxe-11-hero.webp",
+      "alt": "Habitación Deluxe, Alto Castillo Lodge"
+    }
+  ],
+  "suite-principal": [
+    {
+      "src": "/images/suite-principal/suite-principal-01-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-02-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-03-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-04-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-05-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-06-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-07-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-08-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-09-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-10-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-11-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-12-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-13-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-14-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-15-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-16-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-17-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-18-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/suite-principal/suite-principal-19-hero.webp",
+      "alt": "Suite Principal, Alto Castillo Lodge"
+    }
+  ],
+  "standard": [
+    {
+      "src": "/images/standard/standard-01-hero.webp",
+      "alt": "Habitación Standard, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/standard/standard-02-hero.webp",
+      "alt": "Habitación Standard, Alto Castillo Lodge"
+    }
+  ],
+  "living-comun": [
+    {
+      "src": "/images/living-comun/living-comun-01-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-02-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-03-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-04-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-05-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-06-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-07-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-08-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-09-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    },
+    {
+      "src": "/images/living-comun/living-comun-10-hero.webp",
+      "alt": "living y comedor común, Alto Castillo Lodge"
+    }
+  ]
+}

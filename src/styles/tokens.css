@@ -1,0 +1,58 @@
+/**
+ * Design tokens — portados 1:1 del Brand Guideline real de Figma
+ * (LLcZFcEdaEfmR1g1eIiKjg, secciones 02 Paleta, 03 Tipografía, 06 Espaciado).
+ * No inventar valores nuevos acá: si falta un token, se vuelve al Figma.
+ */
+:root {
+  /* 02 — Paleta de color */
+  --color-forest: #425327; /* Verde Bosque — principal: titulares, botones, logotipo */
+  --color-forest-hover: #344219; /* hover de botón primario, medido del Figma */
+  --color-sage: #bcc2b3; /* Verde Salvia — secundario: fondos suaves, texto de apoyo */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-bg: #f7f5f0; /* fondo principal de página */
+  --color-bg-alt: #eae8e2; /* fondo alterno de sección / tarjeta */
+  --color-error: #b94040; /* solo estados de error de formulario */
+  --color-overlay: #1a1a1a; /* base del degradado sobre foto (texto sobre imagen) */
+  --color-ink: var(--color-black);
+  --color-ink-soft: #5b6354; /* texto secundario, verde-tintado, no un gris puro */
+
+  /* 03 — Sistema tipográfico */
+  --font-display: var(--font-libre-baskerville), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --text-h1-size: 52px;
+  --text-h1-weight: 700;
+  --text-h1-line: 1.15;
+
+  --text-h2-size: 36px;
+  --text-h2-weight: 400;
+  --text-h2-line: 1.25;
+
+  --text-h3-size: 24px;
+  --text-h3-weight: 400;
+  --text-h3-style: italic;
+  --text-h3-line: 1.35;
+
+  --text-body-size: 16px;
+  --text-body-weight: 400;
+  --text-body-line: 1.6;
+
+  --text-caption-size: 12px;
+  --text-caption-weight: 500;
+  --text-caption-tracking: 0.06em;
+
+  /* 06 — Sistema de espaciado (base 8px) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px; /* P1: padding vertical de sección */
+
+  /* Motion — principios del §5 del brief: easings largos, nada de bounce */
+  --ease-lenis: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-reveal: 1.2s;
+  --duration-hover: 0.2s;
+}
