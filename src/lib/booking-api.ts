@@ -41,6 +41,7 @@ export type CreateBookingPayload = {
     OriginCountry?: string;
     SpecialNotes?: string;
     DietaryRestrictions?: string[];
+    Preferences?: { actividad_preferida?: string };
   };
   BookingNotes?: string;
 };
@@ -110,4 +111,13 @@ export const ROOM_LABELS: Record<RoomId, string> = {
   "Deluxe Terraza 2": "Deluxe Terraza 2",
   "Deluxe Superior": "Deluxe Superior",
   "Suite Principal": "Suite Principal",
+};
+
+/** Foto real por habitación — mismas curadas a mano que las landings de /habitaciones. */
+export const ROOM_PHOTOS: Record<RoomId, { src: string; alt: string }> = {
+  "Suite Principal": { src: "/images/suite-principal/suite-principal-01-card.webp", alt: "Suite Principal, Alto Castillo Lodge" },
+  "Deluxe Superior": { src: "/images/deluxe-superior/deluxe-superior-04-card.webp", alt: "Deluxe Superior, Alto Castillo Lodge" },
+  "Deluxe Terraza 1": { src: "/images/deluxe/deluxe-09-card.webp", alt: "Deluxe Terraza 1, Alto Castillo Lodge" },
+  "Deluxe Terraza 2": { src: "/images/deluxe/deluxe-03-card.webp", alt: "Deluxe Terraza 2, Alto Castillo Lodge" },
+  Standard: { src: "/images/standard/standard-01-card.webp", alt: "Habitación Standard, Alto Castillo Lodge" },
 };

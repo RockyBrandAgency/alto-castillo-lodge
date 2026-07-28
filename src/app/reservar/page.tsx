@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { AvailabilityCalendar } from "@/components/booking/AvailabilityCalendar";
+import { FlightRouteSuggestion } from "@/components/booking/FlightRouteSuggestion";
 import {
   fetchAvailability,
   createBooking,
   simulatePayment,
   estimatePrice,
   ROOM_LABELS,
+  ROOM_PHOTOS,
   type AvailabilityResponse,
   type RoomId,
   type CreateBookingResult,
@@ -18,6 +21,13 @@ import {
 import styles from "./page.module.css";
 
 const CURRENCY_LABEL = { CLP: "CLP", USD: "USD" } as const;
+
+const ACTIVITY_OPTIONS = [
+  "Golden Hour Circuit",
+  "Baqueano Fire Cooking (Asado al Palo)",
+  "Wild Wellness (senderos y cascadas)",
+  "No lo tengo considerado",
+] as const;
 
 export default function ReservarPage() {
   const [availability, setAvailability] = useState<AvailabilityResponse | null>(null);
@@ -36,6 +46,7 @@ export default function ReservarPage() {
   const [whatsapp, setWhatsapp] = useState("");
   const [originCountry, setOriginCountry] = useState("");
   const [specialNotes, setSpecialNotes] = useState("");
+  const [preferredActivity, setPreferredActivity] = useState<string>("");
 
   const [submitState, setSubmitState] = useState<"idle" | "loading" | "done">("idle");
   const [submitResult, setSubmitResult] = useState<CreateBookingResult | null>(null);
@@ -130,6 +141,7 @@ export default function ReservarPage() {
         Contact: { Email: email || undefined, WhatsApp: whatsapp || undefined },
         OriginCountry: originCountry || undefined,
         SpecialNotes: specialNotes || undefined,
+        Preferences: preferredActivity ? { actividad_preferida: preferredActivity } : undefined,
       },
     });
     setSubmitResult(result);
@@ -163,11 +175,14 @@ export default function ReservarPage() {
         {!loadError && !availability && <p>Cargando disponibilidad…</p>}
 
         {availability && (
-          <p className={styles.intro}>
-            Elegí una habitación para ver su calendario real de disponibilidad. Seleccioná primero la fecha de
-            llegada y después la de salida (mínimo 2 noches) — los días no disponibles aparecen tachados. El precio
-            se actualiza solo a medida que completás los pasos.
-          </p>
+          <>
+            <p className={styles.intro}>
+              Elegí una habitación para ver su calendario real de disponibilidad. Seleccioná primero la fecha de
+              llegada y después la de salida (mínimo 2 noches) — los días no disponibles aparecen tachados. El precio
+              se actualiza solo a medida que completás los pasos.
+            </p>
+            <FlightRouteSuggestion />
+          </>
         )}
 
         {availability && (
@@ -188,8 +203,13 @@ export default function ReservarPage() {
                         setTimeout(() => calendarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
                       }}
                     >
-                      <strong>{ROOM_LABELS[h.room_id]}</strong>
-                      Desde {availability.tarifas[h.room_id].basico_clp.toLocaleString("es-CL")} CLP / noche
+                      <span className={styles.roomBtnPhoto}>
+                        <Image src={ROOM_PHOTOS[h.room_id].src} alt={ROOM_PHOTOS[h.room_id].alt} fill sizes="200px" />
+                      </span>
+                      <span className={styles.roomBtnBody}>
+                        <strong>{ROOM_LABELS[h.room_id]}</strong>
+                        Desde {availability.tarifas[h.room_id].basico_clp.toLocaleString("es-CL")} CLP / noche
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -257,6 +277,27 @@ export default function ReservarPage() {
               </div>
 
               <div className={styles.step}>
+                <span className={styles.stepLabel}>¿Qué actividad te interesa más?</span>
+                <div className={styles.activityGrid}>
+                  {ACTIVITY_OPTIONS.map((activity) => (
+                    <label
+                      key={activity}
+                      className={`${styles.activityOption} ${preferredActivity === activity ? styles.activityOptionActive : ""}`}
+                    >
+                      <input
+                        type="radio"
+                        name="preferredActivity"
+                        value={activity}
+                        checked={preferredActivity === activity}
+                        onChange={() => setPreferredActivity(activity)}
+                      />
+                      {activity}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className={styles.step}>
                 <span className={styles.stepLabel}>4 · Tus datos</span>
                 <div className={styles.formGrid}>
                   <FormField label="Nombre completo" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
@@ -277,6 +318,11 @@ export default function ReservarPage() {
 
             <div className={styles.sidebarSticky}>
             <aside className={styles.summary}>
+              {selectedRoom && (
+                <div className={styles.summaryPhoto}>
+                  <Image src={ROOM_PHOTOS[selectedRoom].src} alt={ROOM_PHOTOS[selectedRoom].alt} fill sizes="360px" />
+                </div>
+              )}
               <span className={styles.summaryTitle}>{selectedRoom ? ROOM_LABELS[selectedRoom] : "—"}</span>
               <div className={styles.summaryRow}>
                 <span>Check-in</span>
