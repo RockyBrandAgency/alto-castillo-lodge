@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
@@ -8,6 +8,7 @@ import { AvailabilityCalendar } from "@/components/booking/AvailabilityCalendar"
 import {
   fetchAvailability,
   createBooking,
+  simulatePayment,
   estimatePrice,
   ROOM_LABELS,
   type AvailabilityResponse,
@@ -38,6 +39,9 @@ export default function ReservarPage() {
 
   const [submitState, setSubmitState] = useState<"idle" | "loading" | "done">("idle");
   const [submitResult, setSubmitResult] = useState<CreateBookingResult | null>(null);
+  const [paymentState, setPaymentState] = useState<"idle" | "loading" | "confirmed" | "error">("idle");
+  const [paymentError, setPaymentError] = useState<string | null>(null);
+  const calendarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     fetchAvailability()
@@ -132,11 +136,23 @@ export default function ReservarPage() {
     setSubmitState("done");
   }
 
+  async function handleSimulatePayment() {
+    if (!submitResult?.ok) return;
+    setPaymentState("loading");
+    setPaymentError(null);
+    const result = await simulatePayment(submitResult.BookingID);
+    if (result.ok) {
+      setPaymentState("confirmed");
+    } else {
+      setPaymentState("error");
+      setPaymentError(result.error);
+    }
+  }
+
   return (
     <main>
       <div className={styles.hero}>
         <Container>
-          <span className={styles.eyebrow}>Disponibilidad real · PMS Alto Castillo</span>
           <h1 className={styles.title}>Reservar</h1>
         </Container>
       </div>
@@ -145,6 +161,14 @@ export default function ReservarPage() {
         {loadError && <div className={`${styles.statusBox} ${styles.statusError}`}>{loadError} — escríbenos por WhatsApp: +56 9 7267 3885.</div>}
 
         {!loadError && !availability && <p>Cargando disponibilidad…</p>}
+
+        {availability && (
+          <p className={styles.intro}>
+            Elegí una habitación para ver su calendario real de disponibilidad. Seleccioná primero la fecha de
+            llegada y después la de salida (mínimo 2 noches) — los días no disponibles aparecen tachados. El precio
+            se actualiza solo a medida que completás los pasos.
+          </p>
+        )}
 
         {availability && (
           <form className={styles.layout} onSubmit={handleSubmit}>
@@ -161,6 +185,7 @@ export default function ReservarPage() {
                         setSelectedRoom(h.room_id);
                         setCheckIn(null);
                         setCheckOut(null);
+                        setTimeout(() => calendarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
                       }}
                     >
                       <strong>{ROOM_LABELS[h.room_id]}</strong>
@@ -170,8 +195,8 @@ export default function ReservarPage() {
                 </div>
               </div>
 
-              <div className={styles.step}>
-                <span className={styles.stepLabel}>2 · Fechas (mínimo 2 noches)</span>
+              <div className={styles.step} ref={calendarRef}>
+                <span className={styles.stepLabel}>Selecciona las fechas (mínimo 2 noches)</span>
                 {roomAvailability && (
                   <AvailabilityCalendar
                     dias={availability.dias}
@@ -250,6 +275,7 @@ export default function ReservarPage() {
               </div>
             </div>
 
+            <div className={styles.sidebarSticky}>
             <aside className={styles.summary}>
               <span className={styles.summaryTitle}>{selectedRoom ? ROOM_LABELS[selectedRoom] : "—"}</span>
               <div className={styles.summaryRow}>
@@ -288,7 +314,73 @@ export default function ReservarPage() {
                   )}
                 </div>
               )}
+
+              {submitState === "done" && submitResult?.ok && paymentState !== "confirmed" && (
+                <div className={styles.demoPayment}>
+                  <span className={styles.demoBadge}>Modo demo — pago simulado</span>
+                  <p className={styles.note}>
+                    No se pide ni se procesa ningún dato de tarjeta real ni falso. Este botón solo simula lo que haría
+                    la pasarela de pago real el día que exista ({"[PASARELA]"} sigue sin definir) — confirma la
+                    reserva de verdad en el PMS.
+                  </p>
+                  <div className={styles.demoOrderRow}>
+                    <span>Total a &quot;cobrar&quot;</span>
+                    <strong>
+                      {estimatedTotal ? `${estimatedTotal.toLocaleString("es-CL")} ${CURRENCY_LABEL[currency]}` : "—"}
+                    </strong>
+                  </div>
+                  <Button type="button" variant="secondary" onClick={handleSimulatePayment} disabled={paymentState === "loading"}>
+                    {paymentState === "loading" ? "Procesando pago simulado…" : "Simular pago aprobado"}
+                  </Button>
+                  {paymentState === "error" && paymentError && (
+                    <div className={`${styles.statusBox} ${styles.statusError}`}>{paymentError}</div>
+                  )}
+                </div>
+              )}
+
+              {paymentState === "confirmed" && (
+                <div className={`${styles.statusBox} ${styles.statusSuccess}`}>
+                  <strong>Pago simulado aprobado.</strong> La reserva quedó <strong>CONFIRMED</strong> en el PMS real — ya
+                  es visible así en el Dashboard del dueño.
+                </div>
+              )}
             </aside>
+
+            <div className={styles.considerations}>
+              <span className={styles.considerationsTitle}>Antes de reservar</span>
+              <div className={styles.considerationItem}>
+                <span className={styles.considerationIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <circle cx="8.5" cy="9" r="1.6" />
+                    <circle cx="12" cy="6.5" r="1.6" />
+                    <circle cx="15.5" cy="9" r="1.6" />
+                    <path d="M9 15c0-2.2 1.5-3.5 3-3.5s3 1.3 3 3.5-1.5 3.5-3.5 3.5S9 17.2 9 15Z" />
+                    <line x1="3" y1="3" x2="21" y2="21" />
+                  </svg>
+                </span>
+                <span>No se aceptan mascotas — estamos a los pies de un parque nacional.</span>
+              </div>
+              <div className={styles.considerationItem}>
+                <span className={styles.considerationIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
+                  </svg>
+                </span>
+                <span>El seguro de viaje no está incluido.</span>
+              </div>
+              <div className={styles.considerationItem}>
+                <span className={styles.considerationIcon} aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <path d="M3 16V9a1 1 0 0 1 1-1h9l4 4h3a1 1 0 0 1 1 1v3" />
+                    <path d="M3 16h15" />
+                    <circle cx="7" cy="18" r="1.8" />
+                    <circle cx="17" cy="18" r="1.8" />
+                  </svg>
+                </span>
+                <span>¿Necesitás transporte desde Balmaceda? Avísanos en las notas.</span>
+              </div>
+            </div>
+            </div>
           </form>
         )}
       </Container>

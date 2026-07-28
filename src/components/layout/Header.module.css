@@ -20,15 +20,20 @@
   justify-content: space-between;
 }
 
-.wordmark {
-  font-family: var(--font-display);
-  font-size: 19px;
-  color: var(--color-white);
-  transition: color 0.3s ease;
+.logoLink {
+  display: inline-flex;
+  align-items: center;
 }
 
-.headerSolid .wordmark {
-  color: var(--color-ink);
+.logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  transition: height 0.3s ease;
+}
+
+.headerSolid .logo {
+  height: 32px;
 }
 
 .nav {

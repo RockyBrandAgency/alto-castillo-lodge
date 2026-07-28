@@ -23,8 +23,13 @@ export function Header() {
     <header className={`${styles.header} ${solid ? styles.headerSolid : ""}`}>
       <Container>
         <div className={styles.row}>
-          <Link href="/" className={styles.wordmark}>
-            Alto Castillo
+          <Link href="/" className={styles.logoLink} aria-label="Alto Castillo Lodge — inicio">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={solid ? "/logo/alto-castillo-logo.svg" : "/logo/alto-castillo-logo-white.svg"}
+              alt="Alto Castillo Lodge"
+              className={styles.logo}
+            />
           </Link>
           <nav className={styles.nav}>
             <Link href="/#habitaciones" className={styles.navLink}>

@@ -30,7 +30,18 @@ export default function ScrollProvider({ children }: { children: React.ReactNode
     }
     rafId = requestAnimationFrame(raf);
 
+    // Bug real encontrado en vivo (Sesión W1, /reservar): Lenis calcula el
+    // alto scrolleable una sola vez al montar. Páginas cuyo contenido
+    // crece después (datos que llegan por fetch, un formulario que se
+    // expande) quedaban con scroll "corto" - el final de la página
+    // quedaba inalcanzable aunque el DOM sí tuviera más alto. Un
+    // ResizeObserver sobre <body> mantiene a Lenis al día con el alto
+    // real en todo momento, no solo al cargar.
+    const resizeObserver = new ResizeObserver(() => lenis.resize());
+    resizeObserver.observe(document.body);
+
     return () => {
+      resizeObserver.disconnect();
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };

@@ -11,7 +11,7 @@ type Room = {
   priceLabel: string;
 };
 
-/** Habitaciones — preview (brief §3.4). CTA va a /reservar (real, conectado al PMS) — las landings individuales por habitación son la Sesión W2. */
+/** Habitaciones — preview (brief §3.4). CTA va a la landing real de cada habitación. */
 export function RoomsPreview({ rooms }: { rooms: Room[] }) {
   return (
     <section className={styles.section} id="habitaciones">
@@ -34,8 +34,8 @@ export function RoomsPreview({ rooms }: { rooms: Room[] }) {
                 title={room.title}
                 text={room.text}
                 priceLabel={room.priceLabel}
-                ctaLabel="Reservar"
-                ctaHref="/reservar"
+                ctaLabel="Ver habitación"
+                ctaHref={`/habitaciones/${room.slug}`}
               />
             ))}
           </div>

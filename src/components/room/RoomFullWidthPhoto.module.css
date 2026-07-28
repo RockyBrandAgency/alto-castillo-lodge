@@ -1,0 +1,15 @@
+.section {
+  position: relative;
+  height: 70vh;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: -14% 0;
+}
+
+.image {
+  object-fit: cover;
+}

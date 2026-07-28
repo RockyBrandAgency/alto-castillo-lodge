@@ -66,6 +66,25 @@ export async function createBooking(payload: CreateBookingPayload): Promise<Crea
   }
 }
 
+export type SimulatePaymentResult = { ok: true; Status: string } | { ok: false; error: string };
+
+/**
+ * SIMULACIÓN para la demo — no es una pasarela de pago real ([PASARELA]
+ * sigue sin definir). No pide ni transmite ningún dato de tarjeta, real
+ * ni falso. Transiciona la reserva real a CONFIRMED en el PMS, igual que
+ * lo haría un webhook real el día que exista una pasarela.
+ */
+export async function simulatePayment(bookingId: string): Promise<SimulatePaymentResult> {
+  try {
+    const res = await fetch(`${API_BASE}/public/reservas/${bookingId}/simular-pago`, { method: "PATCH" });
+    const data = await res.json();
+    if (!res.ok) return { ok: false, error: data.error || "No pudimos simular el pago." };
+    return { ok: true, Status: data.Status };
+  } catch {
+    return { ok: false, error: "No pudimos conectar con el servidor." };
+  }
+}
+
 /** Misma fórmula que _compute_price en web_booking_lambda.py — para mostrar el precio en vivo antes de enviar. El servidor siempre recalcula. */
 export function estimatePrice(
   rate: RateEntry,
