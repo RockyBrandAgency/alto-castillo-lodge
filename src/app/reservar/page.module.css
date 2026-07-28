@@ -1,0 +1,222 @@
+.hero {
+  padding: var(--space-10) 0 var(--space-6);
+  background: var(--color-bg-alt);
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin-bottom: var(--space-1);
+}
+
+.title {
+  font-size: var(--text-h2-size);
+  color: var(--color-ink);
+}
+
+.layout {
+  padding: var(--space-8) 0 var(--space-10);
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  margin-bottom: var(--space-6);
+}
+
+.stepLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  margin-bottom: var(--space-2);
+}
+
+.roomGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-2);
+}
+
+.roomBtn {
+  border: 1px solid var(--color-sage);
+  border-radius: 3px;
+  background: var(--color-white);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.roomBtn strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.roomBtnActive {
+  border-color: var(--color-forest);
+  background: color-mix(in srgb, var(--color-forest) 6%, transparent);
+}
+
+.controlRow {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.selectField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectLabel {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.select {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  padding: 9px 12px;
+  border: 1px solid var(--color-sage);
+  border-radius: 3px;
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.childrenRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+.childAgeInput {
+  width: 64px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-sage);
+  border-radius: 3px;
+}
+
+.addChildBtn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-forest);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.removeChildBtn {
+  font-size: 13px;
+  color: var(--color-error);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (max-width: 520px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summary {
+  position: sticky;
+  top: var(--space-4);
+  border: 1px solid var(--color-bg-alt);
+  border-radius: 3px;
+  padding: var(--space-4);
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.summaryTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-ink);
+  margin-bottom: var(--space-1);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--color-ink-soft);
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-ink);
+  padding-top: var(--space-2);
+  margin-top: var(--space-1);
+  border-top: 1px solid var(--color-bg-alt);
+}
+
+.note {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+.statusBox {
+  border-radius: 3px;
+  padding: var(--space-3);
+  font-size: 14.5px;
+  margin-top: var(--space-2);
+}
+
+.statusError {
+  background: var(--error-bg, rgba(185, 64, 64, 0.08));
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+}
+
+.statusSuccess {
+  background: color-mix(in srgb, var(--color-forest) 8%, transparent);
+  border: 1px solid var(--color-forest);
+  color: var(--color-forest);
+}

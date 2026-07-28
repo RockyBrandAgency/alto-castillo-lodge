@@ -1,0 +1,124 @@
+.calendar {
+  border: 1px solid var(--color-bg-alt);
+  border-radius: 3px;
+  padding: var(--space-3);
+  background: var(--color-white);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.navBtn {
+  background: none;
+  border: 1px solid var(--color-sage);
+  border-radius: 3px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-forest);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.monthLabel {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-ink);
+  text-transform: capitalize;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.weekday {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  padding: 4px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.dayEmpty {
+  visibility: hidden;
+}
+
+.dayUnavailable {
+  color: var(--color-ink-soft);
+  text-decoration: line-through;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.dayPast {
+  visibility: hidden;
+}
+
+.dayAvailable:hover {
+  background: var(--color-bg-alt);
+}
+
+.dayInRange {
+  background: color-mix(in srgb, var(--color-sage) 55%, transparent);
+}
+
+.daySelected {
+  background: var(--color-forest);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.legend {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}

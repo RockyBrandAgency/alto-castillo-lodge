@@ -12,7 +12,7 @@ type Experience = {
 /** Experiencias firma (brief §3.5): layout editorial asimétrico, imagen dominante. */
 export function SignatureExperiences({ experiences }: { experiences: Experience[] }) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="experiencias">
       <Container>
         <Reveal>
           <div className={styles.header}>

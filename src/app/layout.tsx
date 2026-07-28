@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import ScrollProvider from "@/lib/motion/ScrollProvider";
+import { Header } from "@/components/layout/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -34,7 +35,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${libreBaskerville.variable}`}>
       <body>
-        <ScrollProvider>{children}</ScrollProvider>
+        <ScrollProvider>
+          <Header />
+          {children}
+        </ScrollProvider>
       </body>
     </html>
   );

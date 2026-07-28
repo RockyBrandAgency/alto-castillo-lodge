@@ -8,12 +8,13 @@ type Room = {
   title: string;
   text: string;
   image: { src: string; alt: string };
+  priceLabel: string;
 };
 
-/** Habitaciones — preview (brief §3.4): 4 tarjetas → landings. */
+/** Habitaciones — preview (brief §3.4). CTA va a /reservar (real, conectado al PMS) — las landings individuales por habitación son la Sesión W2. */
 export function RoomsPreview({ rooms }: { rooms: Room[] }) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="habitaciones">
       <Container>
         <Reveal>
           <div className={styles.header}>
@@ -32,9 +33,9 @@ export function RoomsPreview({ rooms }: { rooms: Room[] }) {
                 image={room.image}
                 title={room.title}
                 text={room.text}
-                priceLabel="Tarifa: consultar"
-                ctaLabel="Ver habitación"
-                ctaHref={`/habitaciones/${room.slug}`}
+                priceLabel={room.priceLabel}
+                ctaLabel="Reservar"
+                ctaHref="/reservar"
               />
             ))}
           </div>
