@@ -1,5 +1,6 @@
 import { MarketingCard } from "@/components/ui/MarketingCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 import styles from "./SignatureExperiences.module.css";
 
 type Experience = {
@@ -12,7 +13,7 @@ type Experience = {
 export function SignatureExperiences({ experiences }: { experiences: Experience[] }) {
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         <Reveal>
           <div className={styles.header}>
             <span className={styles.eyebrow}>Ritual & experiencia</span>
@@ -26,7 +27,7 @@ export function SignatureExperiences({ experiences }: { experiences: Experience[
             ))}
           </div>
         </Reveal>
-      </div>
+      </Container>
     </section>
   );
 }

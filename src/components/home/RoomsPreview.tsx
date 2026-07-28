@@ -1,5 +1,6 @@
 import { MarketingCard } from "@/components/ui/MarketingCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 import styles from "./RoomsPreview.module.css";
 
 type Room = {
@@ -13,7 +14,7 @@ type Room = {
 export function RoomsPreview({ rooms }: { rooms: Room[] }) {
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         <Reveal>
           <div className={styles.header}>
             <div>
@@ -38,7 +39,7 @@ export function RoomsPreview({ rooms }: { rooms: Room[] }) {
             ))}
           </div>
         </Reveal>
-      </div>
+      </Container>
     </section>
   );
 }

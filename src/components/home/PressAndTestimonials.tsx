@@ -1,5 +1,6 @@
 import { MarketingCard } from "@/components/ui/MarketingCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 import styles from "./PressAndTestimonials.module.css";
 
 /**
@@ -10,7 +11,7 @@ import styles from "./PressAndTestimonials.module.css";
 export function PressAndTestimonials() {
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         <Reveal>
           <div className={styles.press}>
             <span className={styles.pressLabel}>Destacado en</span>
@@ -33,7 +34,7 @@ export function PressAndTestimonials() {
             />
           </div>
         </Reveal>
-      </div>
+      </Container>
     </section>
   );
 }
