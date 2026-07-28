@@ -16,18 +16,18 @@ export function FlightRouteSuggestion() {
   const message =
     origin.countryCode === "CL" ? (
       <>
-        Nos visitás desde <strong>Chile</strong>. La ruta más directa es volar a{" "}
+        Nos visitas desde <strong>Chile</strong>. La ruta más directa es volar a{" "}
         <strong>Balmaceda (BBA)</strong> — desde ahí son 72 km hasta el lodge.
       </>
     ) : origin.continent === "SA" ? (
       <>
-        Nos visitás desde <strong>{origin.countryName}</strong>. La ruta más simple suele ser conectar en{" "}
+        Nos visitas desde <strong>{origin.countryName}</strong>. La ruta más simple suele ser conectar en{" "}
         <strong>Santiago (SCL)</strong> y de ahí tomar un vuelo doméstico a <strong>Balmaceda (BBA)</strong>, a 72 km
         del lodge.
       </>
     ) : (
       <>
-        Nos visitás desde <strong>{origin.countryName}</strong>. La mayoría de las conexiones internacionales llegan
+        Nos visitas desde <strong>{origin.countryName}</strong>. La mayoría de las conexiones internacionales llegan
         a <strong>Santiago (SCL)</strong> — desde ahí, un vuelo doméstico te deja en <strong>Balmaceda (BBA)</strong>,
         a 72 km del lodge.
       </>

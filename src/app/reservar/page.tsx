@@ -177,9 +177,9 @@ export default function ReservarPage() {
         {availability && (
           <>
             <p className={styles.intro}>
-              Elegí una habitación para ver su calendario real de disponibilidad. Seleccioná primero la fecha de
+              Elige una habitación para ver su calendario real de disponibilidad. Selecciona primero la fecha de
               llegada y después la de salida (mínimo 2 noches) — los días no disponibles aparecen tachados. El precio
-              se actualiza solo a medida que completás los pasos.
+              se actualiza solo a medida que completas los pasos.
             </p>
             <FlightRouteSuggestion />
           </>
@@ -423,7 +423,7 @@ export default function ReservarPage() {
                     <circle cx="17" cy="18" r="1.8" />
                   </svg>
                 </span>
-                <span>¿Necesitás transporte desde Balmaceda? Avísanos en las notas.</span>
+                <span>¿Necesitas transporte desde Balmaceda? Avísanos en las notas.</span>
               </div>
             </div>
             </div>
