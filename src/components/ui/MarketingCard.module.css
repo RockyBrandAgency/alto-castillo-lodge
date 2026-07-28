@@ -17,10 +17,22 @@
 .photo {
   position: relative;
   aspect-ratio: 4 / 5;
+  overflow: hidden;
 }
 
 .photoImage {
   object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo:hover .photoImage {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoImage {
+    transition: none;
+  }
 }
 
 .photoOverlay {
@@ -122,10 +134,22 @@
 .roomImage {
   position: relative;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
 }
 
 .roomImageEl {
   object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room:hover .roomImageEl {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roomImageEl {
+    transition: none;
+  }
 }
 
 .roomBody {
